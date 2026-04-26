@@ -169,3 +169,14 @@
 - **How they responded:** Tests written with deterministic setup — directly manipulating engine state rather than relying on random level generation.
 - **Files changed:** FrogRTests/GameEngineTests.swift (420 lines), FrogRTests/GameViewModelTests.swift (254 lines), FrogRTests/FrogRTests.swift (29 lines, replaced placeholder)
 - **Result:** Commit `fdbe995`. Full test coverage for engine and view model. xcodegen regenerated successfully with all test files.
+
+---
+
+### LM-011: Hypnotoad Wires the AI Service Layer
+- **When:** Build phase — after design + tests, completing the service architecture
+- **Who:** Hypnotoad (AI/Services Dev)
+- **What happened:** Built the complete GitHub Models API service layer in 279 seconds — 523 lines across 5 files. Production AIService with JSONSerialization-based request/response handling, exponential backoff retry with jitter, three-tier fallback model switching (gpt-4.1 → mini → nano) on 429 rate limits. MockAIService for tests and previews. 13 test cases covering mock behavior, backoff math, config validation, and error handling.
+- **What was learned:** The JSONSerialization approach (over Codable) gives maximum flexibility for the varying response shapes from the GitHub Models API. The `[String: Any]` dictionaries let us navigate nested JSON without rigid struct definitions — important when the API evolves or returns unexpected fields. Exponential backoff with jitter prevents thundering herd on rate limit recovery.
+- **How they responded:** Clean protocol-first design: AIServiceProtocol defines the contract, AIService implements production behavior, MockAIService provides deterministic test doubles. Config is centralized in AIServiceConfig with model tiers and backoff parameters.
+- **Files changed:** FrogR/Services/AIServiceProtocol.swift (20 lines), FrogR/Services/AIService.swift (208 lines), FrogR/Services/MockAIService.swift (82 lines), FrogR/Services/AIServiceConfig.swift (29 lines), FrogRTests/AIServiceTests.swift (184 lines)
+- **Result:** Commit `1592b45`. All day-one patterns verified: JSONSerialization ✅, class-based services ✅, protocol abstraction ✅, retry + backoff + fallback ✅. xcodegen regenerated successfully.
