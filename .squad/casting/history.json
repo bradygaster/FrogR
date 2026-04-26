@@ -1,0 +1,24 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "Futurama",
+      "used_at": "2026-04-25T20:43:21Z",
+      "project": "FrogR"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "frogr-initial": {
+      "assignment_id": "frogr-initial",
+      "universe": "Futurama",
+      "created_at": "2026-04-25T20:43:21Z",
+      "agents": {
+        "leela": "Lead",
+        "fry": "iOS Dev",
+        "farnsworth": "AI/Services Dev",
+        "hermes": "Tester",
+        "amy": "Design Engineer",
+        "kif": "Integration Engineer"
+      }
+    }
+  }
+}

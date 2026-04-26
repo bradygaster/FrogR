@@ -1,0 +1,52 @@
+{
+  "agents": {
+    "leela": {
+      "persistent_name": "Leela",
+      "universe": "Futurama",
+      "role": "Lead",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "fry": {
+      "persistent_name": "Fry",
+      "universe": "Futurama",
+      "role": "iOS Dev",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "farnsworth": {
+      "persistent_name": "Farnsworth",
+      "universe": "Futurama",
+      "role": "AI/Services Dev",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "hermes": {
+      "persistent_name": "Hermes",
+      "universe": "Futurama",
+      "role": "Tester",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "amy": {
+      "persistent_name": "Amy",
+      "universe": "Futurama",
+      "role": "Design Engineer",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "kif": {
+      "persistent_name": "Kif",
+      "universe": "Futurama",
+      "role": "Integration Engineer",
+      "created_at": "2026-04-25T20:43:21Z",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}
