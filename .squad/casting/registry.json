@@ -53,6 +53,15 @@
       "created_at": "2026-04-26T03:58:00Z",
       "recast_from": "Kif (Futurama)",
       "status": "active"
+    },
+    "jeremiah": {
+      "persistent_name": "Jeremiah",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Jeremiah the Bullfrog (Three Dog Night)",
+      "role": "Chronicler",
+      "created_at": "2026-04-26T04:05:00Z",
+      "recast_from": null,
+      "status": "active"
     }
   }
 }

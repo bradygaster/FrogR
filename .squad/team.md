@@ -18,6 +18,7 @@
 | Michigan | Tester | `.squad/agents/michigan/charter.md` | 🧪 Active | Michigan J. Frog (Warner Bros.) |
 | Keroppi | Design Engineer | `.squad/agents/keroppi/charter.md` | 🎨 Active | Keroppi (Sanrio) |
 | Slippy | Integration Engineer | `.squad/agents/slippy/charter.md` | ⚙️ Active | Slippy Toad (Star Fox) |
+| Jeremiah | Chronicler | `.squad/agents/jeremiah/charter.md` | 📜 Active | Jeremiah (Three Dog Night) |
 | Scribe | Session Logger | `.squad/agents/scribe/charter.md` | 📋 Active | — |
 | Ralph | Work Monitor | — | 🔄 Monitor | — |
 

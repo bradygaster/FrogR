@@ -15,6 +15,7 @@ How to decide who handles what.
 | Code review | Kermit | Review PRs, check quality, suggest improvements |
 | Testing | Michigan | Write tests, find edge cases, verify fixes |
 | Scope & priorities | Kermit | What to build next, trade-offs, decisions |
+| Learning moments, chronicle, team evolution | Jeremiah | Document what agents learn, how they learn, what changes |
 | Session logging | Scribe | Automatic — never needs routing |
 
 ## Issue Routing
