@@ -1,51 +1,57 @@
 {
   "agents": {
-    "leela": {
-      "persistent_name": "Leela",
-      "universe": "Futurama",
+    "kermit": {
+      "persistent_name": "Kermit",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Kermit the Frog (The Muppets)",
       "role": "Lead",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Leela (Futurama)",
       "status": "active"
     },
-    "fry": {
-      "persistent_name": "Fry",
-      "universe": "Futurama",
+    "frogger": {
+      "persistent_name": "Frogger",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Frogger (Konami, 1981)",
       "role": "iOS Dev",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Fry (Futurama)",
       "status": "active"
     },
-    "farnsworth": {
-      "persistent_name": "Farnsworth",
-      "universe": "Futurama",
+    "hypnotoad": {
+      "persistent_name": "Hypnotoad",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Hypnotoad (Futurama)",
       "role": "AI/Services Dev",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Farnsworth (Futurama)",
       "status": "active"
     },
-    "hermes": {
-      "persistent_name": "Hermes",
-      "universe": "Futurama",
+    "michigan": {
+      "persistent_name": "Michigan",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Michigan J. Frog (Warner Bros., 1955)",
       "role": "Tester",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Hermes (Futurama)",
       "status": "active"
     },
-    "amy": {
-      "persistent_name": "Amy",
-      "universe": "Futurama",
+    "keroppi": {
+      "persistent_name": "Keroppi",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Keroppi (Sanrio)",
       "role": "Design Engineer",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Amy (Futurama)",
       "status": "active"
     },
-    "kif": {
-      "persistent_name": "Kif",
-      "universe": "Futurama",
+    "slippy": {
+      "persistent_name": "Slippy",
+      "universe": "Famous Frogs (Pop Culture)",
+      "inspired_by": "Slippy Toad (Star Fox, Nintendo)",
       "role": "Integration Engineer",
-      "created_at": "2026-04-25T20:43:21Z",
-      "legacy_named": false,
+      "created_at": "2026-04-26T03:58:00Z",
+      "recast_from": "Kif (Futurama)",
       "status": "active"
     }
   }

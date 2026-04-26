@@ -10,16 +10,16 @@
 
 ## Members
 
-| Name | Role | Charter | Status |
-|------|------|---------|--------|
-| Leela | Lead | `.squad/agents/leela/charter.md` | 🏗️ Active |
-| Fry | iOS Dev | `.squad/agents/fry/charter.md` | 📱 Active |
-| Farnsworth | AI/Services Dev | `.squad/agents/farnsworth/charter.md` | 🤖 Active |
-| Hermes | Tester | `.squad/agents/hermes/charter.md` | 🧪 Active |
-| Amy | Design Engineer | `.squad/agents/amy/charter.md` | 🎨 Active |
-| Kif | Integration Engineer | `.squad/agents/kif/charter.md` | ⚙️ Active |
-| Scribe | Session Logger | `.squad/agents/scribe/charter.md` | 📋 Active |
-| Ralph | Work Monitor | — | 🔄 Monitor |
+| Name | Role | Charter | Status | Inspired By |
+|------|------|---------|--------|-------------|
+| Kermit | Lead | `.squad/agents/kermit/charter.md` | 🏗️ Active | Kermit the Frog (The Muppets) |
+| Frogger | iOS Dev | `.squad/agents/frogger/charter.md` | 📱 Active | Frogger (Konami, 1981) |
+| Hypnotoad | AI/Services Dev | `.squad/agents/hypnotoad/charter.md` | 🤖 Active | Hypnotoad (Futurama) |
+| Michigan | Tester | `.squad/agents/michigan/charter.md` | 🧪 Active | Michigan J. Frog (Warner Bros.) |
+| Keroppi | Design Engineer | `.squad/agents/keroppi/charter.md` | 🎨 Active | Keroppi (Sanrio) |
+| Slippy | Integration Engineer | `.squad/agents/slippy/charter.md` | ⚙️ Active | Slippy Toad (Star Fox) |
+| Scribe | Session Logger | `.squad/agents/scribe/charter.md` | 📋 Active | — |
+| Ralph | Work Monitor | — | 🔄 Monitor | — |
 
 ## Project Context
 
