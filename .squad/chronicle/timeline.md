@@ -193,4 +193,23 @@
 - **Files changed:** Debug.xcconfig
 - **Result:** Commit `ff8eb20`. Build proceeds with or without Secrets.xcconfig. When Brady's ready to use the AI features, he just creates the file from the template.
 
+---
+
+### LM-013: @Observable Re-Render Loops in TimelineView
+
+**Date:** 2026-04-25
+**Commit:** `6a5570f`
+**By:** Frogger (iOS Dev)
+**Category:** SwiftUI / @Observable
+
+**What happened:** Game hung on "Start Game" tap. The `TimelineView` content closure called `viewModel.tick(date:)` which mutated `engine.lanes` via `moveItems()`. Since `GameEngine` is `@Observable`, even no-op mutations (`x += 0.0` when deltaTime is 0) trigger the observation setter due to struct value semantics (read-modify-write on the array). This caused an infinite re-render loop.
+
+**Fix:** Added `guard dt > 0 else { return }` in both `GameViewModel.tick()` and `GameEngine.update()` to break the cycle when SwiftUI re-invokes the body with the same `TimelineView` date.
+
+**Lesson:** When using `@Observable` with `TimelineView`, any struct mutation inside the content closure — even a no-op like `x += 0.0` — fires the observation setter and triggers a re-render. Always guard against zero-delta re-invocations. This is a fundamental pattern for any 60fps game loop in SwiftUI with `@Observable`.
+
+**Pattern:** `guard deltaTime > 0 else { return }` at the top of any update function called from a `TimelineView` body.
+
+---
+
 > 💡 **Future improvement:** Attach learning moments to git commits in a structured format, so the chronicle can be auto-generated from `git log`. Consider a `LM:` trailer in commit messages or a git-notes-based approach.
