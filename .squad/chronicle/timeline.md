@@ -104,4 +104,46 @@
 
 ---
 
-*Chronicle continues as the build begins...*
+### LM-007: Project Scaffold — Slippy Delivers the Foundation
+- **When:** 2026-04-26T04:09:00Z
+- **Who:** Slippy (Integration Engineer)
+- **What happened:** Slippy created the complete project scaffold in a background agent: `project.yml` (xcodegen spec targeting iOS 17.0, Swift 5, Debug/Release configs), `Debug.xcconfig` → `Secrets.xcconfig` chain for GITHUB_TOKEN injection, `FrogRApp.swift` minimal @main entry point, asset catalog with frog green (#4CAF50) accent color, `FrogRTests` placeholder, and `.gitignore` covering `.xcodeproj/`, `Secrets.xcconfig`, and `DerivedData/`.
+- **What was learned:** The xcconfig chain pattern (`Debug.xcconfig` includes `Secrets.xcconfig` which is gitignored) is clean for secret management. The template file `Secrets.xcconfig.template` documents what devs need to create locally. xcodegen's `configFiles` key wires the chain at the project level.
+- **How they responded:** All files created in 56 seconds by background agent. Reviewed and committed as `439e6dc`.
+- **Files changed:**
+  - `project.yml` (created — xcodegen spec)
+  - `Debug.xcconfig` (created — includes Secrets.xcconfig)
+  - `Secrets.xcconfig.template` (created — shows GITHUB_TOKEN placeholder)
+  - `.gitignore` (created — comprehensive iOS ignores)
+  - `FrogR/FrogRApp.swift` (created — @main entry)
+  - `FrogR/Info.plist` (created — standard keys + GITHUB_TOKEN)
+  - `FrogR/Assets.xcassets/` (created — catalog + AccentColor)
+  - `FrogRTests/FrogRTests.swift` (created — placeholder)
+- **Result:** Clean foundation. Ready for game code to land on top.
+
+---
+
+### LM-008: Game Core — Frogger Builds the Entire Game Engine + UI
+- **When:** 2026-04-26T04:11:00Z
+- **Who:** Frogger (iOS Dev)
+- **What happened:** Frogger created 7 Swift files comprising the complete game: `GameModels.swift` (all types — GameState, Direction, LaneType, Lane, Obstacle, Platform, Frog, GridConstants on a 12×13 grid), `GameEngine.swift` (@Observable engine with movement, collision detection, platform riding/drift, level generation with speed scaling, goal slot tracking, life system), `GameViewModel.swift` (@Observable VM owning the engine, high score persistence via UserDefaults, swipe-to-direction mapping, formatted display properties), `GameView.swift` (TimelineView at 60fps, GeometryReader for responsive cell sizing, emoji rendering for frog/cars/logs/turtles, swipe gestures, HUD overlay, pause screen), `MenuView.swift` (gradient background, animated title, start button, high score display), `GameOverView.swift` (score display, new high score badge, play again + main menu), `ContentView.swift` (root switch on GameState with animated transitions).
+- **What was learned:** 
+  - `TimelineView(.animation)` is the right SwiftUI primitive for a game loop — it calls back every frame and can be paused/resumed.
+  - Platform riding requires a fractional `ridingOffset` on the frog that accumulates each frame, separate from the integer grid position.
+  - The `@Bindable` property wrapper is needed when passing `@Observable` objects to child views that need to call mutating methods.
+  - Clamping `deltaTime` to 0.1s prevents physics explosions when the app returns from background.
+  - Cars mirror via `scaleEffect(x: -1)` based on direction — simple and effective for emoji vehicles.
+- **How they responded:** All files created in 148 seconds by background agent. Reviewed for compliance with all day-one technical decisions. Committed as `9127c5a`.
+- **Files changed:**
+  - `FrogR/Models/GameModels.swift` (created — 121 lines)
+  - `FrogR/Game/GameEngine.swift` (created — 306 lines)
+  - `FrogR/ViewModels/GameViewModel.swift` (created — 102 lines)
+  - `FrogR/Views/GameView.swift` (created — 242 lines)
+  - `FrogR/Views/MenuView.swift` (created — 87 lines)
+  - `FrogR/Views/GameOverView.swift` (created — 84 lines)
+  - `FrogR/Views/ContentView.swift` (created — 21 lines)
+- **Result:** FrogR has a complete, playable game. 962 lines of Swift. Zero ObservableObject, zero indices-based ForEach, all Identifiable. Two commits, one scaffold, one game. The frog can cross roads, ride logs, reach goals, die, score, level up, and pause. 🐸🎮
+
+---
+
+*Chronicle continues...*
