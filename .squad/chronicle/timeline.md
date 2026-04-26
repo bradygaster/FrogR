@@ -147,3 +147,25 @@
 ---
 
 *Chronicle continues...*
+
+---
+
+### LM-009: Keroppi Design Drop — Colors, Icon, Launch Screen
+- **When:** 2026-04-25 ~21:13
+- **Who:** Keroppi (Design Engineer)
+- **What happened:** Keroppi delivered a complete design pass in 72 seconds — 6 named color sets with dark mode variants, AppIcon asset catalog (modern single-size 1024×1024), LaunchScreen.storyboard, Info.plist updates for portrait lock and light status bar.
+- **What was learned:** The modern iOS app icon format only needs a single 1024×1024 slot with `"platform": "ios"` — Xcode handles all resizing. The old multi-size format with explicit filenames per scale is legacy.
+- **How they responded:** Fixed AppIcon Contents.json from legacy multi-size format to modern single-slot format. Committed cleanly.
+- **Files changed:** 7 new colorset Contents.json, AppIcon.appiconset/Contents.json, LaunchScreen.storyboard, FrogR/Info.plist
+- **Result:** Commit `17d5007`. Design system complete. App icon slot ready for artwork drop-in.
+
+---
+
+### LM-010: Michigan Test Suite — 47 Tests, 703 Lines
+- **When:** 2026-04-25 ~21:13 (parallel with Keroppi)
+- **Who:** Michigan (Tester)
+- **What happened:** Michigan wrote 47 unit tests across 3 files in 385 seconds. Covered all 14 GameEngine scenarios (movement, collision, platform riding, goals, game over, pause, speed scaling, drift death) and all 7 GameViewModel scenarios (formatting, swipe mapping, tick clamping, high score persistence).
+- **What was learned:** @Observable properties are directly accessible in tests without any wrapper ceremony — unlike ObservableObject where you'd need to observe @Published changes. This made test setup dramatically simpler: just set `engine.frog.gridX = 5` and assert.
+- **How they responded:** Tests written with deterministic setup — directly manipulating engine state rather than relying on random level generation.
+- **Files changed:** FrogRTests/GameEngineTests.swift (420 lines), FrogRTests/GameViewModelTests.swift (254 lines), FrogRTests/FrogRTests.swift (29 lines, replaced placeholder)
+- **Result:** Commit `fdbe995`. Full test coverage for engine and view model. xcodegen regenerated successfully with all test files.
