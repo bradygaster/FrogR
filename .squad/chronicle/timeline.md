@@ -22,7 +22,7 @@
   - `.squad/routing.md` (created)
   - `.squad/decisions.md` (created)
   - `.squad/casting/registry.json` + `history.json` (created)
-- **Result:** Commit `212299c` — team fully operational. All 6 agents active with project-specific context baked into their charters.
+- **Result:** Commit [`212299c`](https://github.com/bradygaster/FrogR/commit/212299c) — team fully operational. All 6 agents active with project-specific context baked into their charters.
 
 ---
 
@@ -109,7 +109,7 @@
 - **Who:** Slippy (Integration Engineer)
 - **What happened:** Slippy created the complete project scaffold in a background agent: `project.yml` (xcodegen spec targeting iOS 17.0, Swift 5, Debug/Release configs), `Debug.xcconfig` → `Secrets.xcconfig` chain for GITHUB_TOKEN injection, `FrogRApp.swift` minimal @main entry point, asset catalog with frog green (#4CAF50) accent color, `FrogRTests` placeholder, and `.gitignore` covering `.xcodeproj/`, `Secrets.xcconfig`, and `DerivedData/`.
 - **What was learned:** The xcconfig chain pattern (`Debug.xcconfig` includes `Secrets.xcconfig` which is gitignored) is clean for secret management. The template file `Secrets.xcconfig.template` documents what devs need to create locally. xcodegen's `configFiles` key wires the chain at the project level.
-- **How they responded:** All files created in 56 seconds by background agent. Reviewed and committed as `439e6dc`.
+- **How they responded:** All files created in 56 seconds by background agent. Reviewed and committed as [`439e6dc`](https://github.com/bradygaster/FrogR/commit/439e6dc).
 - **Files changed:**
   - `project.yml` (created — xcodegen spec)
   - `Debug.xcconfig` (created — includes Secrets.xcconfig)
@@ -133,7 +133,7 @@
   - The `@Bindable` property wrapper is needed when passing `@Observable` objects to child views that need to call mutating methods.
   - Clamping `deltaTime` to 0.1s prevents physics explosions when the app returns from background.
   - Cars mirror via `scaleEffect(x: -1)` based on direction — simple and effective for emoji vehicles.
-- **How they responded:** All files created in 148 seconds by background agent. Reviewed for compliance with all day-one technical decisions. Committed as `9127c5a`.
+- **How they responded:** All files created in 148 seconds by background agent. Reviewed for compliance with all day-one technical decisions. Committed as [`9127c5a`](https://github.com/bradygaster/FrogR/commit/9127c5a).
 - **Files changed:**
   - `FrogR/Models/GameModels.swift` (created — 121 lines)
   - `FrogR/Game/GameEngine.swift` (created — 306 lines)
@@ -157,7 +157,7 @@
 - **What was learned:** The modern iOS app icon format only needs a single 1024×1024 slot with `"platform": "ios"` — Xcode handles all resizing. The old multi-size format with explicit filenames per scale is legacy.
 - **How they responded:** Fixed AppIcon Contents.json from legacy multi-size format to modern single-slot format. Committed cleanly.
 - **Files changed:** 7 new colorset Contents.json, AppIcon.appiconset/Contents.json, LaunchScreen.storyboard, FrogR/Info.plist
-- **Result:** Commit `17d5007`. Design system complete. App icon slot ready for artwork drop-in.
+- **Result:** Commit [`17d5007`](https://github.com/bradygaster/FrogR/commit/17d5007). Design system complete. App icon slot ready for artwork drop-in.
 
 ---
 
@@ -168,7 +168,7 @@
 - **What was learned:** @Observable properties are directly accessible in tests without any wrapper ceremony — unlike ObservableObject where you'd need to observe @Published changes. This made test setup dramatically simpler: just set `engine.frog.gridX = 5` and assert.
 - **How they responded:** Tests written with deterministic setup — directly manipulating engine state rather than relying on random level generation.
 - **Files changed:** FrogRTests/GameEngineTests.swift (420 lines), FrogRTests/GameViewModelTests.swift (254 lines), FrogRTests/FrogRTests.swift (29 lines, replaced placeholder)
-- **Result:** Commit `fdbe995`. Full test coverage for engine and view model. xcodegen regenerated successfully with all test files.
+- **Result:** Commit [`fdbe995`](https://github.com/bradygaster/FrogR/commit/fdbe995). Full test coverage for engine and view model. xcodegen regenerated successfully with all test files.
 
 ---
 
@@ -179,13 +179,13 @@
 - **What was learned:** The JSONSerialization approach (over Codable) gives maximum flexibility for the varying response shapes from the GitHub Models API. The `[String: Any]` dictionaries let us navigate nested JSON without rigid struct definitions — important when the API evolves or returns unexpected fields. Exponential backoff with jitter prevents thundering herd on rate limit recovery.
 - **How they responded:** Clean protocol-first design: AIServiceProtocol defines the contract, AIService implements production behavior, MockAIService provides deterministic test doubles. Config is centralized in AIServiceConfig with model tiers and backoff parameters.
 - **Files changed:** FrogR/Services/AIServiceProtocol.swift (20 lines), FrogR/Services/AIService.swift (208 lines), FrogR/Services/MockAIService.swift (82 lines), FrogR/Services/AIServiceConfig.swift (29 lines), FrogRTests/AIServiceTests.swift (184 lines)
-- **Result:** Commit `1592b45`. All day-one patterns verified: JSONSerialization ✅, class-based services ✅, protocol abstraction ✅, retry + backoff + fallback ✅. xcodegen regenerated successfully.
+- **Result:** Commit [`1592b45`](https://github.com/bradygaster/FrogR/commit/1592b45). All day-one patterns verified: JSONSerialization ✅, class-based services ✅, protocol abstraction ✅, retry + backoff + fallback ✅. xcodegen regenerated successfully.
 
 ---
 
 ### LM-012: Optional Includes — Build Resilience Over Rigid Dependencies
 - **When:** 2026-04-25T21:36:00-07:00
-- **Commit:** `ff8eb20`
+- **Commit:** [`ff8eb20`](https://github.com/bradygaster/FrogR/commit/ff8eb20)
 - **Who:** Slippy (Integration Engineer), triggered by Brady's first real Xcode build attempt
 - **What happened:** Brady opened the project in Xcode for the first time and hit an immediate build failure: `could not find included file 'Secrets.xcconfig' in search paths`. The Debug.xcconfig used `#include "Secrets.xcconfig"` — a hard include that fails when the file doesn't exist. Since Secrets.xcconfig is gitignored (it holds the GitHub PAT), it won't exist on a fresh clone.
 - **What was learned:** xcconfig files support `#include?` (optional include) — the `?` suffix makes the preprocessor silently skip missing files instead of erroring. This is the correct pattern for any gitignored config: hard includes create a "works on my machine" trap. The AI service layer exists but isn't wired into gameplay, so the token isn't even needed yet. Always prefer optional includes for secrets/environment-specific configs.
@@ -198,7 +198,7 @@
 ### LM-013: @Observable Re-Render Loops in TimelineView
 
 **Date:** 2026-04-25
-**Commit:** `6a5570f`
+**Commit:** [`6a5570f`](https://github.com/bradygaster/FrogR/commit/6a5570f)
 **By:** Frogger (iOS Dev)
 **Category:** SwiftUI / @Observable
 

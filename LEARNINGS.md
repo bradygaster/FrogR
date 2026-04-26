@@ -61,7 +61,7 @@ func tick(date: Date) {
 }
 ```
 
-Commit: `6a5570f`
+Commit: [`6a5570f`](https://github.com/bradygaster/FrogR/commit/6a5570f)
 
 ---
 
@@ -101,7 +101,7 @@ For required configs (like shared build settings), use the hard include:
 
 This way, your project builds on first clone without extra setup instructions.
 
-Commit: `ff8eb20`
+Commit: [`ff8eb20`](https://github.com/bradygaster/FrogR/commit/ff8eb20)
 
 ---
 
@@ -141,11 +141,11 @@ Commit: `1777175302464` (Teams message ID of the fix)
 Between 4:09 and 4:13 on April 26, 2026, the squad executed the most impressive feat in the FrogR story: five agents built in parallel, and 2,500+ lines of production Swift hit the repo.
 
 **What Happened:**
-- **04:09** — Slippy completed the scaffold: project.yml, xcconfig chain, FrogRApp entry point. Commit `439e6dc`.
-- **04:11** — Frogger delivered the complete game (962 lines): GameModels, GameEngine with physics, GameViewModel, GameView, MenuView, GameOverView, ContentView. Commit `9127c5a`.
-- **~21:13 (parallel, same day)** — Keroppi delivered design: 6 color sets, AppIcon, LaunchScreen. Commit `17d5007`.
-- **~21:13 (parallel with Keroppi)** — Michigan delivered tests: 47 test cases covering all engine scenarios. Commit `fdbe995`.
-- **Post-tests** — Hypnotoad delivered AI service: JSONSerialization-based service layer, mock doubles, exponential backoff, three-tier model fallback. Commit `1592b45`.
+- **04:09** — Slippy completed the scaffold: project.yml, xcconfig chain, FrogRApp entry point. Commit [`439e6dc`](https://github.com/bradygaster/FrogR/commit/439e6dc).
+- **04:11** — Frogger delivered the complete game (962 lines): GameModels, GameEngine with physics, GameViewModel, GameView, MenuView, GameOverView, ContentView. Commit [`9127c5a`](https://github.com/bradygaster/FrogR/commit/9127c5a).
+- **~21:13 (parallel, same day)** — Keroppi delivered design: 6 color sets, AppIcon, LaunchScreen. Commit [`17d5007`](https://github.com/bradygaster/FrogR/commit/17d5007).
+- **~21:13 (parallel with Keroppi)** — Michigan delivered tests: 47 test cases covering all engine scenarios. Commit [`fdbe995`](https://github.com/bradygaster/FrogR/commit/fdbe995).
+- **Post-tests** — Hypnotoad delivered AI service: JSONSerialization-based service layer, mock doubles, exponential backoff, three-tier model fallback. Commit [`1592b45`](https://github.com/bradygaster/FrogR/commit/1592b45).
 
 **The Insight:**
 Five different agents, five different specializations, zero merge conflicts, zero blocking handoffs. The scaffold was lean enough to support parallel work. The abstractions were clean. By the time the second team (Keroppi and Michigan) finished, the first team (Slippy and Frogger) had moved on to the next problem (Hypnotoad's service layer). No waiting. No bottlenecks.
@@ -200,7 +200,7 @@ Use `@Observable` for game engines, state machines, and any data model where Swi
 - Simpler tests (just set properties and assert)
 - Simpler architecture (plain classes with plain properties)
 
-Commit: `fdbe995`
+Commit: [`fdbe995`](https://github.com/bradygaster/FrogR/commit/fdbe995)
 
 ---
 
@@ -224,7 +224,7 @@ When setting up iOS design systems:
 - **Colors:** Named color sets with dark mode variants (FrogGreen light/dark, WaterBlue light/dark, etc.)
 - **Launch screen:** Still needs a storyboard (SwiftUI-only apps can't use pure SwiftUI launch screens)
 
-Commit: `17d5007`
+Commit: [`17d5007`](https://github.com/bradygaster/FrogR/commit/17d5007)
 
 ---
 
@@ -267,7 +267,7 @@ APIs evolve. New endpoints get new response shapes. The service layer Hypnotoad 
 - **Use JSONSerialization** when integrating with new/evolving APIs (AI models, beta services, anything that might change)
 - **Consider Codable with @unknown default** if you need some structure but want to handle evolution
 
-Commits: `1592b45` (AIService), `AIServiceTests`
+Commits: [`1592b45`](https://github.com/bradygaster/FrogR/commit/1592b45) (AIService), `AIServiceTests`
 
 ---
 
@@ -290,7 +290,7 @@ It means teams aren't locked into their initial conception. If the context chang
 **Pattern for Future Builders:**
 Allow for team identity evolution. Build the system so agents can be recast without losing history or breaking workflows. Archive old identities rather than deleting them. This flexibility is what enables teams to grow with their projects.
 
-Commits: `212299c` (initial roster), `LM-004` recast updates
+Commits: [`212299c`](https://github.com/bradygaster/FrogR/commit/212299c) (initial roster), `LM-004` recast updates
 
 ---
 
