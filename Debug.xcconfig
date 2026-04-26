@@ -1,4 +1,4 @@
 // Debug build configuration for FrogR
-// Includes secrets that are gitignored
+// Optionally includes secrets (gitignored) — build works without it
 
-#include "Secrets.xcconfig"
+#include? "Secrets.xcconfig"
