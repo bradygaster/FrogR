@@ -180,3 +180,17 @@
 - **How they responded:** Clean protocol-first design: AIServiceProtocol defines the contract, AIService implements production behavior, MockAIService provides deterministic test doubles. Config is centralized in AIServiceConfig with model tiers and backoff parameters.
 - **Files changed:** FrogR/Services/AIServiceProtocol.swift (20 lines), FrogR/Services/AIService.swift (208 lines), FrogR/Services/MockAIService.swift (82 lines), FrogR/Services/AIServiceConfig.swift (29 lines), FrogRTests/AIServiceTests.swift (184 lines)
 - **Result:** Commit `1592b45`. All day-one patterns verified: JSONSerialization ✅, class-based services ✅, protocol abstraction ✅, retry + backoff + fallback ✅. xcodegen regenerated successfully.
+
+---
+
+### LM-012: Optional Includes — Build Resilience Over Rigid Dependencies
+- **When:** 2026-04-25T21:36:00-07:00
+- **Commit:** `ff8eb20`
+- **Who:** Slippy (Integration Engineer), triggered by Brady's first real Xcode build attempt
+- **What happened:** Brady opened the project in Xcode for the first time and hit an immediate build failure: `could not find included file 'Secrets.xcconfig' in search paths`. The Debug.xcconfig used `#include "Secrets.xcconfig"` — a hard include that fails when the file doesn't exist. Since Secrets.xcconfig is gitignored (it holds the GitHub PAT), it won't exist on a fresh clone.
+- **What was learned:** xcconfig files support `#include?` (optional include) — the `?` suffix makes the preprocessor silently skip missing files instead of erroring. This is the correct pattern for any gitignored config: hard includes create a "works on my machine" trap. The AI service layer exists but isn't wired into gameplay, so the token isn't even needed yet. Always prefer optional includes for secrets/environment-specific configs.
+- **How they responded:** One-character fix: `#include "Secrets.xcconfig"` → `#include? "Secrets.xcconfig"`. Build unblocked.
+- **Files changed:** Debug.xcconfig
+- **Result:** Commit `ff8eb20`. Build proceeds with or without Secrets.xcconfig. When Brady's ready to use the AI features, he just creates the file from the template.
+
+> 💡 **Future improvement:** Attach learning moments to git commits in a structured format, so the chronicle can be auto-generated from `git log`. Consider a `LM:` trailer in commit messages or a git-notes-based approach.
