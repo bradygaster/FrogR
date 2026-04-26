@@ -81,7 +81,7 @@ final class GameViewModel {
 
         if let last = lastUpdateTime {
             let dt = date.timeIntervalSince(last)
-            // Clamp delta to avoid huge jumps (e.g. after backgrounding)
+            guard dt > 0 else { return }  // skip re-renders with same date
             let clampedDt = min(dt, 0.1)
             engine.update(deltaTime: clampedDt)
         }

@@ -74,6 +74,7 @@ final class GameEngine {
 
     func update(deltaTime: TimeInterval) {
         guard gameState == .playing else { return }
+        guard deltaTime > 0 else { return }  // no-op writes trigger @Observable
         elapsedTime += deltaTime
 
         moveItems(deltaTime: deltaTime)
